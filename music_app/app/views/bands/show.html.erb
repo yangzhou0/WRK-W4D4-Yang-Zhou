@@ -1,0 +1,36 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+<h1>Check out this band! </h1>
+
+<table style="width:80%" >
+
+  <tr>
+    <th>Name</th>
+    <% if @band.albums != nil %>
+      <% @band.albums.each do |album| %>
+        <th>album.title</th>
+      <% end %>
+    <% end %>
+  </tr>
+  <tr >
+    <td><%= @band.name %></td>
+    <% if @band.albums != nil %>
+      <% @band.albums.each do |album| %>
+        <td>album.year</td>
+      <% end %>
+    <% end %>
+    
+
+  </tr>
+</table>
+
+<a href="<%= edit_band_url(@band) %>">Edit this band!</a>
+
+<a href="<%= band_url(@band)%>", data-method ='delete'> Delete this band!</a>
+
+<a href="<%= new_album_url %>">add a new album!</a>
+
+<a href="<%= bands_url %>">Show me all the bands!</a>

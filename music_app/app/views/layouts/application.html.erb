@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    <style>
+      header {
+        font-size: 50px;
+        font-style:italic;
+        font-variant: small-caps
+      }
+    </style>
+  
+  </head>
+
+  <body>
+    <header> Music App </header>
+    
+      <% if current_user %>
+       <h2> Welcome, <%= current_user.email %>!</h2>
+       <form action="<%= session_url %>" method="post">
+         <input type="hidden" name="_method" value="delete">
+         <input type="submit" value="Log Out">
+       </form>
+      <% else %>
+        <%= link_to "Register a new account", new_user_url %>
+      <% end %>
+   
+   <br>
+   <br>
+   
+      <% if flash[:errors] %>
+       <% flash[:errors].each do |error| %>
+        <%= error %>
+       <% end %>
+      <% end %>
+      <%= yield %>
+  </body>
+  
+  <footer>
+    <p> Welcome to the world of music <p>
+    <%= yield :footer %>
+  </footer>
+</html>

@@ -1,0 +1,28 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+<h1>Check out this Album! </h1>
+
+<table style="width:80%" >
+
+  <tr>
+    <th>Band</th>
+    <th>Title</th>
+    <th>year</th>
+  </tr>
+  <tr >
+    <td><%= @album.band.name %></td>
+    <td><%= @album.title %></td>
+    <td><%= @album.year %></td>
+    
+
+  </tr>
+</table>
+
+<a href="<%= edit_album_url(@album) %>">Edit this album!</a>
+
+<a href="<%= album_url(@album)%>", data-method ='delete'> Delete this album!</a>
+
+<a href="<%= band_url(@album.band) %>">Show me the band this album belongs to</a>
